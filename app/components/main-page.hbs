@@ -1,0 +1,13 @@
+<input type="checkbox" checked={{this.showOnlyFavorites}} {{on 'click' (fn this.toggleShowOnlyFavorites)}} />
+<ul id="posts-container">
+  {{#each this.posts as |post|}}
+    {{#if (or (not this.showOnlyFavorites) post.isFavorite)}}
+      <li class="post">
+        <div>
+          <input type="checkbox" checked={{post.isFavorite}} {{on 'click' (fn this.favoriteClicked post)}} />
+          <img src={{post.url}} class="post-image" />
+        </div>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
